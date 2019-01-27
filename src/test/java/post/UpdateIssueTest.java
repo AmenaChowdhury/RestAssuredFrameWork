@@ -51,7 +51,19 @@ public void putInIssue(){
     }
 
 
-
+    @Test
+    public void putInComponent(){
+        String sessionId = BaseTest.doLogin();
+        String payLoad = PayloadGenerator.generatePayLoadString("CreateComponent2.json");
+        String uri = URL.getEndPoint("/rest/api/2/component");
+        Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
+        String payLoad1 = PayloadGenerator.generatePayLoadString("PutComponent.json");
+        String uri1 = URL.getEndPoint("/rest/api/2/issue/10029");
+        Response response1 = RESTCalls.PUTRequest(uri1,payLoad1,sessionId);
+        BaseAssertion.verifyResponseHeader(response1,"X-Seraph-LoginReason" ,"OK");
+        BaseAssertion.verifyStatusCode(response,201);
+        BaseAssertion.verifyStatusCode(response1,204);
+    }
 
 
 

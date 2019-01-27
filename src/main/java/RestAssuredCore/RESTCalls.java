@@ -59,6 +59,7 @@ public class RESTCalls {
 		log.info("Inside DELETERequest call");
 		RequestSpecification requestSpecification = RestAssured.given().body(strJSON);
 		requestSpecification.contentType(ContentType.JSON);
+		requestSpecification.header("Authorization","Basic cmFzaGVkLmFybm9iOmFybm9iMDcwNA==");
 		Response response = requestSpecification.delete(uRI);
 		log.debug(requestSpecification.log().all());
 		return response;

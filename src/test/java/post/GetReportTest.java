@@ -53,7 +53,30 @@ public class GetReportTest {
         BaseAssertion.verifyStatusCode(response,200);
     }
 
+    @Test
+    public void getComponentCountBody(){
+        String sessionId = BaseTest.doLogin();
+        //  String payLoad = PayloadGenerator.generatePayLoadString("UpdateBug.json");
+        String uri = URL.getEndPoint("/rest/api/2/component/10001/relatedIssueCounts");
+        Response response = RESTCalls.GETRequest(uri);
+        String expectedText = "HTTP/1.1 200 ";//PayloadGenerator.generatePayLoadString("ComponentCountBody.json");
+        BaseAssertion.verifyResponseBody(response,expectedText);
+        BaseAssertion.verifyResponseHeader(response,"Content-Encoding" ,"gzip");
+        BaseAssertion.verifyStatusCode(response,200);
+    }
 
+    @Test
+    public void getComponentCount(){
+        String sessionId = BaseTest.doLogin();
+        //  String payLoad = PayloadGenerator.generatePayLoadString("UpdateBug.json");
+        String uri = URL.getEndPoint("/rest/api/2/component/10001/relatedIssueCounts");
+        Response response = RESTCalls.GETRequest(uri);
+        String expectedText = "HTTP/1.1 200 ";//PayloadGenerator.generatePayLoadString("ComponentCountBody.json");
+        BaseAssertion.verifyResponseBody(response,expectedText);
+        BaseAssertion.verifyResponseHeader(response,"Content-Encoding" ,"gzip");
+        BaseAssertion.verifyStatusCode(response,200);
+        BaseAssertion.verifyResonseBodyByJsonPath(response,"$.issueCount","null");
+    }
 
 
 }

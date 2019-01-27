@@ -1,0 +1,8 @@
+{
+  "name": "Component 20",
+  "description": "This is a Jira component",
+  "leadUserName": "rashed.arnob",
+  "assigneeType": "PROJECT_LEAD",
+  "isAssigneeTypeValid": false,
+  "project": "REST"
+}

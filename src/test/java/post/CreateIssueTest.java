@@ -71,15 +71,45 @@ public void putInIssue(){
 // }
 
     @Test
-    public void createNewG(){
+    public void createNewG() {
         String sessionId = BaseTest.doLogin();
         String payLoad = PayloadGenerator.generatePayLoadString("CreateGroup.json");
         String uri = URL.getEndPoint("/rest/api/2/group");
-        Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
-        BaseAssertion.verifyResponseHeader(response,"X-AUSERNAME" ,"rashed.arnob");
-        BaseAssertion.verifyStatusCode(response,201);
+        Response response = RESTCalls.POSTRequest(uri, payLoad, sessionId);
+        BaseAssertion.verifyResponseHeader(response, "X-AUSERNAME", "rashed.arnob");
+        BaseAssertion.verifyStatusCode(response, 201);
     }
 
- }
+    @Test
+    public void createNewComponent() {
+        String sessionId = BaseTest.doLogin();
+        String payLoad = PayloadGenerator.generatePayLoadString("CreateComponent.json");
+        String uri = URL.getEndPoint("/rest/api/2/component");
+        Response response = RESTCalls.POSTRequest(uri, payLoad, sessionId);
+        BaseAssertion.verifyResponseHeader(response, "Transfer-Encoding", "chunked");
+        BaseAssertion.verifyStatusCode(response, 201);
+    }
 
+    @Test
+    public void createIssue4() {
 
+        String sessionId = BaseTest.doLogin();
+        String payLoad = PayloadGenerator.generatePayLoadString("CreateBug.json");
+        String uri = URL.getEndPoint("/rest/api/2/issue/");
+        Response response = RESTCalls.POSTRequest(uri, payLoad, sessionId);
+        BaseAssertion.verifyStatusCode(response, 201);
+        BaseAssertion.verifyStatusMessage(response,"HTTP/1.1 201 ");
+
+    }
+
+    @Test
+    public void createGroup() {
+        String sessionId = BaseTest.doLogin();
+        String payLoad = PayloadGenerator.generatePayLoadString("CreateGroup.json");
+        String uri = URL.getEndPoint("/rest/api/2/group");
+        Response response = RESTCalls.POSTRequest(uri, payLoad, sessionId);
+       BaseAssertion.verifyResonseBodyByJsonPath(response,"$.users.max-results",50);
+        BaseAssertion.verifyStatusCode(response, 201);
+    }
+
+}

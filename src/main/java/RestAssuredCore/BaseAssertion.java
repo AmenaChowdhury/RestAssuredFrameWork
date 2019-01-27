@@ -56,4 +56,14 @@ public class BaseAssertion {
 		log.info("Header "+ headerKey + " = " + headerValue +" available");
 	}
 
+	public static void verifyResonseBodyByJsonPath(Response response, String jsonPath, int expectedKeyValue){
+
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		String actualKeyValue  = jsonPathEvaluator.get(jsonPath);
+		log.info("Actual Key Value received from Response:  " + actualKeyValue);
+		Assert.assertEquals(actualKeyValue, expectedKeyValue, "Correct value received in the Response");
+		log.info("Response Assertion Successful");
+
+	}
+
 }
