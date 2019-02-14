@@ -16,7 +16,7 @@ public class CreateIssueTest {
 
     private static Logger log = LogManager.getLogger(CreateIssueTest.class.getName());
 
-/*
+
     @Test
     public void createIssue(){
 
@@ -29,7 +29,7 @@ public class CreateIssueTest {
         BaseAssertion.verifyStatusCode(response,201);
 
 
-    }*/
+    }
 /* @Test
 public void putInIssue(){
         String sessionId = BaseTest.doLogin();
@@ -40,7 +40,7 @@ public void putInIssue(){
      BaseAssertion.verifyStatusCode(response,204);
  }*/
 
- /*@Test
+ @Test
     public void createSubBug(){
      String sessionId = BaseTest.doLogin();
      String payLoad = PayloadGenerator.generatePayLoadString("CreateBug2.json");
@@ -48,27 +48,27 @@ public void putInIssue(){
      Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
      BaseAssertion.verifyResponseHeader(response,"Content-Type" ,"application/json;charset=UTF-8");
      BaseAssertion.verifyStatusCode(response,201);
- }*/
+ }
 
-// @Test
-// public void createSubBug2(){
-//  String sessionId = BaseTest.doLogin();
-//  String payLoad = PayloadGenerator.generatePayLoadString("CreateBug2.json");
-//  String uri = URL.getEndPoint("/rest/api/2/issue");
-//  Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
-//  BaseAssertion.verifyResponseHeader(response,"X-AUSERNAME" ,"rashed.arnob");
-//  BaseAssertion.verifyStatusCode(response,201);
-// }
-//
-// @Test
-// public void createNewUser(){
-//  String sessionId = BaseTest.doLogin();
-//  String payLoad = PayloadGenerator.generatePayLoadString("CreateUser.json");
-//  String uri = URL.getEndPoint("/rest/api/2/user");
-//  Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
-//  BaseAssertion.verifyResponseHeader(response,"X-AUSERNAME" ,"rashed.arnob");
-//  BaseAssertion.verifyStatusCode(response,201);
-// }
+ @Test
+ public void createSubBug2(){
+ String sessionId = BaseTest.doLogin();
+ String payLoad = PayloadGenerator.generatePayLoadString("CreateBug2.json");
+ String uri = URL.getEndPoint("/rest/api/2/issue");
+  Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
+ BaseAssertion.verifyResponseHeader(response,"X-AUSERNAME" ,"rashed.arnob");
+  BaseAssertion.verifyStatusCode(response,201);
+ }
+
+ @Test
+ public void createNewUser(){
+ String sessionId = BaseTest.doLogin();
+ String payLoad = PayloadGenerator.generatePayLoadString("CreateUser.json");
+  String uri = URL.getEndPoint("/rest/api/2/user");
+  Response response = RESTCalls.POSTRequest(uri,payLoad,sessionId);
+  BaseAssertion.verifyResponseHeader(response,"X-AUSERNAME" ,"rashed.arnob");
+ BaseAssertion.verifyStatusCode(response,201);
+ }
 
     @Test
     public void createNewG() {
